@@ -1,3 +1,7 @@
+/**
+ * @author Francesca Ansell
+ */
+
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, ActivityIndicator } from 'react-native';
 import { Images, Colors } from './App/Themes'

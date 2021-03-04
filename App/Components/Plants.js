@@ -9,26 +9,59 @@ import { ListItem, Avatar } from 'react-native-elements';
 
 export default function Plants(props) {
   
-  console.log(props)
+  //console.log(props[0])
   
+  //wrong console.log(props[0].common_name;
+  const renderSeperator = () => {
+    return (
+      <View 
+        style= {{ height: 1, 
+        width: '86%',
+        backgroundColor: 'grey',
+        marginLeft: '14%'}}
+        />
+    )
+  };
+
   return (
     <View>
-      <FlatList
+      <FlatList 
+            style = {styles.list}
             data={props}
-            renderItem={( {item} ) => {
+            renderItem={( {item, index} ) => {
+              return (
+              //console.log(item['common_name']);
+              //undefine console.log(item[0]);
               <ListItem 
                 roundAvatar
-                title = {item.common_name} 
-                subtitle = {item.family}
-                avatar={{ uri: item.image_url}}
-                containerStyle={{botderBottomWidth: 0}}
+                style = {styles.item}
+                title = { item['common_name'] } 
+                subtitle = { item['family'] }
+                avatar={{ uri: item['image_url']}}
+                
                 />
-             }}
+              )
+            }} 
+            /*
+            keyExtractor={ (item, index) => {
+               return item + index.toString()
+            }}
+            */
+            keyExtractor={item => item['id']}
+            ItemSeparatorComponent = {renderSeperator}
       />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  // create styles as necessary
+  item: {
+    width: 300,
+    height: 40, 
+    bottomBorderWidth: 0,
+    topBorderWidth: 0,
+  }, 
+  list: {
+    
+  }
 });

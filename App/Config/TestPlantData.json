@@ -12,7 +12,7 @@
       "rank": "species",
       "family_common_name": "Beech family",
       "genus_id": 5778,
-      "image_url": "https://bs.floristic.org/image/o/1a03948baf0300da25558c2448f086d39b41ca30",
+      "image_url": "http://bs.floristic.org/image/o/1a03948baf0300da25558c2448f086d39b41ca30",
       "synonyms": [
         "Quercus lyauteyi",
         "Quercus rotundifolia f. crassicupulata",
@@ -51,7 +51,7 @@
       "rank": "species",
       "family_common_name": "Nettle family",
       "genus_id": 1028,
-      "image_url": "https://bs.floristic.org/image/o/85256a1c2c098e254fefe05040626a4df49ce248",
+      "image_url": "http://bs.floristic.org/image/o/85256a1c2c098e254fefe05040626a4df49ce248",
       "synonyms": [
         "Urtica major",
         "Urtica tibetica",
@@ -80,7 +80,7 @@
       "rank": "species",
       "family_common_name": "Grass family",
       "genus_id": 2284,
-      "image_url": "https://bs.floristic.org/image/o/428f40dadfa0281dc890ead17fcd07882f9efb09",
+      "image_url": "http://bs.floristic.org/image/o/428f40dadfa0281dc890ead17fcd07882f9efb09",
       "synonyms": [
         "Koeleria dactylis",
         "Festuca glomerata",

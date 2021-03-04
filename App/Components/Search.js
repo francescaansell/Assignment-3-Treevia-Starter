@@ -5,9 +5,24 @@ import { Metrics, Colors, Images } from '../Themes'
 import { TouchableOpacityComponent } from 'react-native';
 
 export default function Search(props) {
+
+  
 	const [text, setText] = useState("");
 
 
+/*
+  //FROM ADD TODO
+  const search = () => {
+    console.log("SEARCH")
+    const plantsCopy = JSON.parse(JSON.stringify(plant));
+    plantsCopy.push(text)
+    console.log(plantsCopy)
+    props.loadPlants( searchPlant(text) )
+    setText('')
+  }
+
+*/
+	
 	return (
 	<View style = {styles.container}>
 	{/*
@@ -18,15 +33,20 @@ export default function Search(props) {
 			
         </TouchableOpacity>
 	*/}
-		<Button 
-			title = "Go"
-			/>
-		<TextInput
-			style={styles.textInput}
-			onChangeText={text => setText(text)} 
-			value={text} 
+	<Button 
+		title = "Go"
+    color = 'green'
+		onPress = { text => setText('') }//, () => props.loadPlants(searchPlant = text)}
+    //onPress = {search}
 		/>
-		<View></View>
+	<TextInput
+		style={styles.textInput}
+		onChangeText={text => setText(text)} 
+		value={text} 
+		onSubmitEditing = { text=> setText('')} //, () => props.loadPlants(searchPlant = text) }
+    //onSumbitEditing = {search}
+	/>
+	<View></View>
   	</View>
 	)
 }
@@ -44,11 +64,6 @@ const styles = StyleSheet.create({
 		paddingLeft: 10,
 		
 	},
-	searchButton: {
-		height: 30, 
-		width: 30, 
-		borderWidth: 1,	
-		backgroundColor: 'red',
+ 
 	
-	}
 });

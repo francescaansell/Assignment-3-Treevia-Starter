@@ -13,7 +13,7 @@ const retrieveDataFromAPI = async (endpointurl) => {
 
     // you can uncomment this line (and comment out lines above)
     // to get test data without making API calls
-    const plants = testdata.data
+    const plants = testData.data
     const result = [];
 
     for (const plant of plants) {

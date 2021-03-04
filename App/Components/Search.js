@@ -25,26 +25,19 @@ export default function Search(props) {
 	
 	return (
 	<View style = {styles.container}>
-	{/*
-		<TouchableOpacity 
-			style={ styles.searchButton }
-			onPress= {} >
-        	<new Image source={Images.logo} style={{height: 30, width: 30}} />
-			
-        </TouchableOpacity>
-	*/}
+
 	<Button 
 		title = "Go"
     color = 'green'
 		onPress = { text => setText('') }//, () => props.loadPlants(searchPlant = text)}
-    //onPress = {search}
+    	//onPress = {search}
 		/>
 	<TextInput
 		style={styles.textInput}
 		onChangeText={text => setText(text)} 
 		value={text} 
 		onSubmitEditing = { text=> setText('')} //, () => props.loadPlants(searchPlant = text) }
-    //onSumbitEditing = {search}
+    	//onSumbitEditing = {search}
 	/>
 	<View></View>
   	</View>

@@ -28,7 +28,7 @@
      } else {
        results = await APIRequest.requestPlantList(plantFilter);
      }
-     console.log('results');
+     //console.log('results');
      console.log(results);
      setLoading(false);
      setPlants(results);
@@ -71,7 +71,8 @@
      flex: 1,
      backgroundColor: '#fff',
      justifyContent: 'center',
-     alignItems: 'center'
+     alignItems: 'center', 
+     marginTop: '25%',
    }, 
    
    searchBar: {

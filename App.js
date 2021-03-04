@@ -1,14 +1,16 @@
 /**
  * @author Francesca Ansell
  */
-
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, ActivityIndicator, 
+  Image, TextInput, FlatList, Button } from 'react-native';
 import { Images, Colors } from './App/Themes'
 import APIRequest from './App/Config/APIRequest'
-
 import Plants from './App/Components/Plants'
 import Search from './App/Components/Search'
+import { LogBox } from 'react-native';
+import { nominalTypeHack } from 'prop-types';
+import { render } from 'react-dom';
 
 export default function App() {
 
@@ -33,30 +35,34 @@ export default function App() {
 
   useEffect(() => { loadPlants() }, []);
 
+  const [text, setText] = useState("");
 
+  // https://reactnativeelements.com/docs/searchbar/
+
+ 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={{textAlign: 'center'}}>
-        Have fun!{'\n\n'}
-        Start by creating an API key in "./App/Config/AppConfig.js".{'\n\n'}
-        Take a look at the following components:{'\n'}
-        "./App/Components/Plants.js"{'\n'}
-        "./App/Components/Search.js"
-      </Text>
 
-      {/* First, the logo */}
+      <View style={styles.logoView}>
+        <Image source={Images.logo} style= {{width:200, height:50}}/>
+      </View>
 
-      {/* Then the search bar */}
+      <View style = {styles.searchBar}>
+      {Search(text)}
+      </View>
 
-      {/* And some plants */}
-
-      {/* You can style and organize these however you want */}
+      <View>
+      {Plants(loadPlants)}
+      
+      </View>
+      
 
       {/* Also, checkout the "./App/Config/APIRequest.js", if you want custom API calls or use test data*/}
 
     </SafeAreaView>
   );
-}
+  }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -64,5 +70,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center'
-  }
+  }, 
+  logoView: {
+
+  },
+ 
+  searchBar: {
+  
+    width: 380,
+    margin: 20,
+    borderRadius: 8,
+    borderWidth: 2,
+   
+    height: 40,
+  }, 
+  
 });

@@ -48,12 +48,11 @@ export default function App() {
       </View>
 
       <View style = {styles.searchBar}>
-      {Search(text)}
+        {Search(text)}
       </View>
 
-      <View>
-      {Plants(loadPlants)}
-      
+      <View style = {styles.plants}>
+        {Plants(plants)}
       </View>
       
 

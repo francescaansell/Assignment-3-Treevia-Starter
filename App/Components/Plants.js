@@ -5,20 +5,21 @@ import { StyleSheet, SafeAreaView, View, FlatList, Text, Linking, ActivityIndica
 import { human } from 'react-native-typography'
 import { Metrics, Colors } from '../Themes'
 import * as WebBrowser from 'expo-web-browser';
-import { ListItem } from 'react-native-elements';
+import { ListItem, Avatar } from 'react-native-elements';
 
 export default function Plants(props) {
   
-  const data = props; 
+  console.log(props)
+  
   return (
     <View>
       <FlatList
-            data={data}
+            data={props}
             renderItem={( {item} ) => {
               <ListItem 
                 roundAvatar
-                title = {`${item.common_name} ${item.family}`}
-                subtitle = {item.id}
+                title = {item.common_name} 
+                subtitle = {item.family}
                 avatar={{ uri: item.image_url}}
                 containerStyle={{botderBottomWidth: 0}}
                 />

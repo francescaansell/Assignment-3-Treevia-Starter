@@ -10,7 +10,6 @@ export default function Search(props) {
   const [text, setText] = useState("");
   const [searchPlant, setSearchPlant] = useState([])
 
-  //FROM ADD TODO
   const search = (text) => {
     console.log('running search')
     setText('')
@@ -25,7 +24,7 @@ export default function Search(props) {
 	<View style = {styles.container}>
 
     <TouchableOpacity
-      //onPress={search(text)} 
+      onPress={ (text) => search(text)} 
       >
     <Feather name="search" size={20} color="grey" style = {{marginTop: 5, marginLeft: 5, padding: 3}}/>
     </TouchableOpacity>
@@ -33,7 +32,7 @@ export default function Search(props) {
       style={styles.textInput}
       onChangeText={text => setText(text)} 
       value={text} 
-      //onSubmitEditing = { search(text) }    
+      onSubmitEditing = { (text) => search(text) }    
     />
 
   </View>

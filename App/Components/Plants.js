@@ -8,9 +8,6 @@ import * as WebBrowser from 'expo-web-browser';
 import { ListItem, Avatar } from 'react-native-elements';
 
 export default function Plants(props) {
-  
-  //valid console.log(props[0])
-  //not valid console.log(props[0].common_name;
   const renderSeperator = () => {
     return (
       <View 
@@ -27,6 +24,12 @@ export default function Plants(props) {
     await WebBrowser.openBrowserAsync(url)
     console.log("running openBrowser");
   }
+  /*
+  const openBrowser =  (url) => {
+    WebBrowser.openBrowserAsync(url)
+    console.log("running openBrowser");
+  }
+  */
 
 
   const listItemRender = (item) => {
@@ -34,7 +37,8 @@ export default function Plants(props) {
       
       <TouchableOpacity 
       style= {styles.listItem}
-      onClick = {openBrowser(item.http_image_url)} 
+      //CALL OPEN BROWSER------------------------------------
+      onClick = { (url) => openBrowser(item.http_image_url)} 
       >
         {/* <Image source={item.image_url} style = {styles.image} />  */ }
         <View style= {{flexShrink: 1}}>

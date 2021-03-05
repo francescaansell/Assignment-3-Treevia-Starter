@@ -55,6 +55,9 @@
         <View style={styles.logoView}>
           <Image source={Images.logo} style= {styles.logoImageLoading}/>
         </View>
+        <View style = {styles.searchBar}>
+         <Search plants={loadPlants}/>
+        </View>
         <ActivityIndicator animating={loading} size= {34} color = {'green'} />
       </View>
     )
@@ -69,7 +72,8 @@
        </View>
  
        <View style = {styles.searchBar}>
-         <Search plants={loadPlants}/>
+         {/* <Search plants={loadPlants}/> */}
+         {Search(loadPlants)}
        </View>
       
       <View style = {styles.plants}>

@@ -6,38 +6,37 @@ import { Feather } from '@expo/vector-icons';
 import { TouchableOpacityComponent } from 'react-native';
 
 export default function Search(props) {
-
   
   const [text, setText] = useState("");
   const [searchPlant, setSearchPlant] = useState([])
 
   //FROM ADD TODO
   const search = (text) => {
-    //console.log('search')
+    console.log('running search')
     setText('')
-    //props.loadPlants(plantSearch = text)
+    props.loadPlants(plantSearch = text)
     
   }
 
-  console.log(props);
+  //console.log(props);
 
 	
 	return (
 	<View style = {styles.container}>
 
-	<TouchableOpacity
-    //onPress={} 
-    >
-  <Feather name="search" size={20} color="grey" style = {{marginTop: 5, marginLeft: 5, padding: 3}}/>
-  </TouchableOpacity>
-	<TextInput
-		style={styles.textInput}
-		onChangeText={text => setText(text)} 
-		value={text} 
-		//onSubmitEditing = { search(text) }    
-	/>
-	<View></View>
-  	</View>
+    <TouchableOpacity
+      //onPress={search(text)} 
+      >
+    <Feather name="search" size={20} color="grey" style = {{marginTop: 5, marginLeft: 5, padding: 3}}/>
+    </TouchableOpacity>
+    <TextInput
+      style={styles.textInput}
+      onChangeText={text => setText(text)} 
+      value={text} 
+      //onSubmitEditing = { search(text) }    
+    />
+
+  </View>
 	)
 }
 
@@ -55,5 +54,4 @@ const styles = StyleSheet.create({
 		
 	},
  
-	
 });

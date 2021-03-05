@@ -31,6 +31,8 @@ export default function Plants(props) {
   }
   */
 
+  const [url, setUrl] = useState(''); 
+ 
 
   const listItemRender = (item) => {
     return (
@@ -38,7 +40,10 @@ export default function Plants(props) {
       <TouchableOpacity 
       style= {styles.listItem}
       //CALL OPEN BROWSER------------------------------------
-      onClick = { (url) => openBrowser(item.http_image_url)} 
+    
+      //onClick = { (url) => openBrowser(url)} 
+    
+      onClick = { (url) => WebBrowser.openBrowserAsync(item.http_image_url) }
       >
         {/* <Image source={item.image_url} style = {styles.image} />  */ }
         <View style= {{flexShrink: 1}}>

@@ -1,5 +1,4 @@
-* figure out how to access json objects 
+https://youtu.be/ncl1bhP3-Pk
 
-* implement tap to view (1 point)
 
-* implement search function (3 points)
+

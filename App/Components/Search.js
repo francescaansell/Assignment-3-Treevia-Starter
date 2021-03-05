@@ -13,11 +13,10 @@ export default function Search(props) {
   const search = (text) => {
     console.log('running search')
     setText('')
-    props.loadPlants(plantSearch = text)
-    
+    props.query(text)
   }
 
-  //console.log(props);
+  console.log(props);
 
 	
 	return (

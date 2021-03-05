@@ -11,6 +11,9 @@
  * https://stackoverflow.com/questions/36284453/react-native-text-going-off-my-screen-refusing-to-wrap-what-to-do
  * https://learning.oreilly.com/library/view/react-native-for/9781484244548/html/346704_2_En_1_Chapter.xhtml
  * https://stackoverflow.com/questions/30115372/how-to-do-logging-in-react-native
+ * 
+ * 
+ * My examples of my code running can be found in my readme file
  */
 
 
@@ -42,13 +45,15 @@
        results = await APIRequest.requestPlantList(plantFilter);
      }
      //console.log('results');
-     //console.log(results);
+     console.log(results);
      setLoading(false);
      setPlants(results);
    }
  
    useEffect(() => { loadPlants() }, []);
 
+  /* 
+  
   if (loading) {
     return (
       <View>
@@ -56,14 +61,15 @@
           <Image source={Images.logo} style= {styles.logoImageLoading}/>
         </View>
         <View style = {styles.searchBar}>
-         <Search plants={loadPlants}/>
+        <Search query = {loadPlants} /> 
         </View>
         <ActivityIndicator animating={loading} size= {34} color = {'green'} />
       </View>
     )
   }
-   
-  
+
+  */
+    
    return (
      <SafeAreaView style={styles.container}>
  
@@ -73,7 +79,8 @@
  
        <View style = {styles.searchBar}>
          {/* <Search plants={loadPlants}/> */}
-         {Search(loadPlants)}
+         {/* Search(loadPlants) */}
+         <Search query = {loadPlants} />
        </View>
       
       <View style = {styles.plants}>

@@ -35,11 +35,8 @@
    }
  
    useEffect(() => { loadPlants() }, []);
- 
+
    
- 
-   // https://reactnativeelements.com/docs/searchbar/
- 
   
    return (
      <SafeAreaView style={styles.container}>

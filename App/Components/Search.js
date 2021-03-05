@@ -8,20 +8,18 @@ export default function Search(props) {
 
   
 	const [text, setText] = useState("");
+  const [searchPlant, setSearchPlant] = useState([])
 
 
-/*
+
   //FROM ADD TODO
-  const search = () => {
-    console.log("SEARCH")
-    const plantsCopy = JSON.parse(JSON.stringify(plant));
-    plantsCopy.push(text)
-    console.log(plantsCopy)
-    props.loadPlants( searchPlant(text) )
+  const search = (text) => {
+    console.log('search')
     setText('')
+    //props.loadPlants(plantSearch = text)
+    
   }
 
-*/
 	
 	return (
 	<View style = {styles.container}>
@@ -29,15 +27,16 @@ export default function Search(props) {
 	<Button 
 		title = "Go"
     color = 'green'
-		onPress = { text => setText('') }//, () => props.loadPlants(searchPlant = text)}
-    	//onPress = {search}
+		//onPress = { search(text) }
+    
 		/>
 	<TextInput
 		style={styles.textInput}
 		onChangeText={text => setText(text)} 
 		value={text} 
-		onSubmitEditing = { text=> setText('')} //, () => props.loadPlants(searchPlant = text) }
-    	//onSumbitEditing = {search}
+		//onSubmitEditing = { search(text) }
+    
+    
 	/>
 	<View></View>
   	</View>

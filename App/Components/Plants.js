@@ -23,41 +23,59 @@ export default function Plants(props) {
     )
   };
 
+  const openBrowser = async (url) => {
+    await WebBrowser.openBrowserAsync(url)
+  }
+ 
+
+  const listItemRender = (item) => {
+    return (
+      <TouchableOpacity 
+      style= {styles.listItem}
+      onClick = {openBrowser(item.url)} >
+        <Image source={item.image_url} style = {styles.image} />
+        <View style= {{flexShrink: 1}}>
+          <Text style= {{fontWeight: 'bold'}}> {item.common_name}</Text>
+          <Text> Scientific Name: {item.scientific_name} </Text>
+          <Text style= {{flexShrink: 1}}> This plant comes from the {item.family} family and genus {item.genus} </Text>
+        </View>
+      </TouchableOpacity>
+
+    )
+  }
+
   return (
     <View>
       <FlatList 
             style = {styles.list}
             data={props}
-            renderItem={( {item} ) => {
-              return (
-              //console.log(item['common_name']);
-              //undefine console.log(item[0]);
-              //console.log(item['id']);
-              <ListItem 
-                roundAvatar
-                style = {styles.item}
-                title = { item['common_name'] } 
-                subtitle = { item['family'] }
-                avatar={{ uri: item['image_url']}}
-                />
-              )
-            }} 
-            /*
-            keyExtractor={ (item, index) => {
-               return item + index.toString()
-            }}
-            */
-            keyExtractor={item => item['id']}
+
+            keyExtractor={item => item.key}
             ItemSeparatorComponent = {renderSeperator}
-      />
+            renderItem = { ( { item, index }) => {
+              return listItemRender(item);
+            }}
+        />
+
+        
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  item: {
-    width: 300,
+   
+  listItem: {
+    padding: 10, 
+    flex: 1,
+    flexDirection: 'row',
+    marginLeft: 10,
+
+
+  },
+  image: {
+    width: 40, 
     height: 40, 
-    
-  }, 
+    borderWidth: 1, 
+    borderRadius: 100, 
+    marginRight: 5}
 });

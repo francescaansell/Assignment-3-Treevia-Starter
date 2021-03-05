@@ -36,6 +36,11 @@
  
    useEffect(() => { loadPlants() }, []);
 
+  if (loading) {
+    return (
+      <ActivityIndicator animating={loading} />
+    )
+  }
    
    
   
@@ -50,11 +55,14 @@
          <Search plants={loadPlants}/>
        </View>
  
-       <ActivityIndicator animating={loading} />
+       
  
-       <View style = {styles.plants}>
-         {Plants(plants)}
-       </View>
+      
+          <View style = {styles.plants}>
+          {Plants(plants)}
+        </View>
+    
+       
        
  
        {/* Also, checkout the "./App/Config/APIRequest.js", if you want custom API calls or use test data*/}

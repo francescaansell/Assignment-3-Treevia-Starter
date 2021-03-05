@@ -34,15 +34,16 @@ export default function Plants(props) {
       
       <TouchableOpacity 
       style= {styles.listItem}
-      //onClick = {openBrowser(item.url)} 
+      onClick = {openBrowser(item.http_image_url)} 
       >
         {/* <Image source={item.image_url} style = {styles.image} />  */ }
         <View style= {{flexShrink: 1}}>
-          <Text style= {{fontWeight: 'bold'}}> {item.common_name}</Text>
+          <Text style= {{fontWeight: 'bold', fontSize: 18}}> {item.common_name}</Text>
           <Text> Scientific Name: {item.scientific_name} </Text>
-          <Text style= {{flexShrink: 1}}> This plant comes from the {item.family} family and genus {item.genus} </Text>
+          <Text style= {{flexShrink: 1, alignItems: 'center'}}> This plant comes from the {item.family} family and genus {item.genus} </Text>
         </View>
       </TouchableOpacity>
+      
 
     )
   }
@@ -58,6 +59,7 @@ export default function Plants(props) {
               return listItemRender(item);
             }}
         />
+       
     </View>
   )
 }

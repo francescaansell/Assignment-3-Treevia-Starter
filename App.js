@@ -102,13 +102,15 @@
  
    plants: {
      borderWidth: 2,
+     borderRadius: 6, 
+     marginBottom: 10, 
    }, 
    logoView: {
      width: Metrics.screenWidth /2,
      //width: 200, 
      //borderWidth: 1,
      height: 50,  
-     marginTop: 15, 
+     marginTop: 25, 
      
    
    }, 

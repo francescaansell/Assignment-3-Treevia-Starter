@@ -50,7 +50,7 @@
          <Search plants={loadPlants}/>
        </View>
  
-       
+       <ActivityIndicator animating={loading} />
  
        <View style = {styles.plants}>
          {Plants(plants)}

@@ -1,4 +1,4 @@
-mport React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, SafeAreaView, View, FlatList, Text, Linking, ActivityIndicator, TouchableOpacity, Image, Button } from 'react-native'
 // human interface guideline
 // https://github.com/hectahertz/react-native-typography
@@ -34,7 +34,8 @@ export default function Plants(props) {
       
       <TouchableOpacity 
       style= {styles.listItem}
-      onClick = {openBrowser(item.url)} >
+      //onClick = {openBrowser(item.url)} 
+      >
         {/* <Image source={item.image_url} style = {styles.image} />  */ }
         <View style= {{flexShrink: 1}}>
           <Text style= {{fontWeight: 'bold'}}> {item.common_name}</Text>

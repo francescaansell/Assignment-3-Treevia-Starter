@@ -12,6 +12,8 @@
  * https://learning.oreilly.com/library/view/react-native-for/9781484244548/html/346704_2_En_1_Chapter.xhtml
  * https://stackoverflow.com/questions/30115372/how-to-do-logging-in-react-native
  */
+
+
  import React, { useState, useEffect } from 'react';
  import { StyleSheet, Text, View, SafeAreaView, ActivityIndicator, 
    Image, TextInput, FlatList, Button } from 'react-native';
@@ -51,20 +53,19 @@
     return (
       <View>
         <View style={styles.logoView}>
-          <Image source={Images.logo} style= {{width:200, height:50}}/>
+          <Image source={Images.logo} style= {styles.logoImageLoading}/>
         </View>
-        <ActivityIndicator animating={loading} />
+        <ActivityIndicator animating={loading} size= {34} color = {'green'} />
       </View>
     )
   }
-   
    
   
    return (
      <SafeAreaView style={styles.container}>
  
        <View style={styles.logoView}>
-         <Image source={Images.logo} style= {{width:200, height:50}}/>
+         <Image source={Images.logo} style= {styles.logoImage}/>
        </View>
  
        <View style = {styles.searchBar}>
@@ -87,6 +88,8 @@
      justifyContent: 'center',
      alignItems: 'center', 
      marginTop: '25%',
+     padding: 20, 
+     margin: 10, 
    }, 
    
    searchBar: {
@@ -101,11 +104,30 @@
      borderWidth: 2,
    }, 
    logoView: {
+     width: Metrics.screenWidth /2,
+     //width: 200, 
+     //borderWidth: 1,
+     height: 50,  
+     marginTop: 15, 
+     
+   
+   }, 
+   logoImage: {
+    width: Metrics.screenWidth /2, 
+    //width: 200,
+     height: 50,
+   },
+   logoImageLoading: {
+     width: Metrics.screenWidth /2,
+     height:50,
      flex: 1,
      justifyContent: 'center',
-   
-     width: Metrics.screenWidth / 2 ,
+     marginLeft: 80, 
+     marginBottom: 40,
+
+     
    }
    
  });
+ 
  

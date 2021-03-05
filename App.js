@@ -37,6 +37,7 @@
    useEffect(() => { loadPlants() }, []);
 
    
+   
   
    return (
      <SafeAreaView style={styles.container}>
@@ -46,7 +47,7 @@
        </View>
  
        <View style = {styles.searchBar}>
-         {Search(plants)}
+         <Search plants={loadPlants}/>
        </View>
  
        

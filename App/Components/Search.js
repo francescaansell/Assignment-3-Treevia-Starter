@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, View, Button, TextInput, TouchableOpacity, TouchableWithoutFeedback, Platform, Keyboard } from 'react-native'
 import { Metrics, Colors, Images } from '../Themes'
 
@@ -7,18 +7,18 @@ import { TouchableOpacityComponent } from 'react-native';
 export default function Search(props) {
 
   
-	const [text, setText] = useState("");
+  const [text, setText] = useState("");
   const [searchPlant, setSearchPlant] = useState([])
-
-
 
   //FROM ADD TODO
   const search = (text) => {
-    console.log('search')
+    //console.log('search')
     setText('')
     //props.loadPlants(plantSearch = text)
     
   }
+
+  console.log(props);
 
 	
 	return (
@@ -26,17 +26,15 @@ export default function Search(props) {
 
 	<Button 
 		title = "Go"
-    color = 'green'
-		//onPress = { search(text) }
+    	color = 'green'
+		//onPress = { props.loadPlants(text)}
     
 		/>
 	<TextInput
 		style={styles.textInput}
 		onChangeText={text => setText(text)} 
 		value={text} 
-		//onSubmitEditing = { search(text) }
-    
-    
+		//onSubmitEditing = { search(text) }    
 	/>
 	<View></View>
   	</View>

@@ -1,93 +1,92 @@
-import React, { useEffect, useState } from 'react'
-import { StyleSheet, SafeAreaView, View, FlatList, Text, Linking, ActivityIndicator, TouchableOpacity, Image, Button } from 'react-native'
+import React, { useState } from 'react'
+import { StyleSheet, SafeAreaView, View, FlatList, Text, Linking, ActivityIndicator, TouchableOpacity, Image } from 'react-native'
 // human interface guideline
 // https://github.com/hectahertz/react-native-typography
 import { human } from 'react-native-typography'
 import { Metrics, Colors } from '../Themes'
 import * as WebBrowser from 'expo-web-browser';
-import { ListItem, Avatar } from 'react-native-elements';
 
 export default function Plants(props) {
-  const renderSeperator = () => {
+  const [refreshing, setRefreshing] = useState(false);
+  const webAction = item => WebBrowser.openBrowserAsync(item.http_image_url);
+
+  const listItemRenderer = item => {
     return (
-      <View 
-        style= {{ 
-        height: 1, 
-        width: '100%',
-        backgroundColor: 'grey',
-        }}
-        />
-    )
-  };
+      <TouchableOpacity onPress={() => webAction(item)}>
+        <View style={styles.plants}>
 
-  const openBrowser = async (url) => {
-    await WebBrowser.openBrowserAsync(url)
-    console.log("running openBrowser");
-  }
-  /*
-  const openBrowser =  (url) => {
-    WebBrowser.openBrowserAsync(url)
-    console.log("running openBrowser");
-  }
-  */
-
-  const [url, setUrl] = useState(''); 
- 
-
-  const listItemRender = (item) => {
-    return (
-      
-      <TouchableOpacity 
-      style= {styles.listItem}
-      //CALL OPEN BROWSER------------------------------------
-    
-      //onClick = { (url) => openBrowser(url)} 
-    
-      onClick = { (url) => WebBrowser.openBrowserAsync(item.http_image_url) }
-      >
-        {/* <Image source={item.image_url} style = {styles.image} />  */ }
-        <View style= {{flexShrink: 1}}>
-          <Text style= {{fontWeight: 'bold', fontSize: 18}}> {item.common_name}</Text>
-          <Text> Scientific Name: {item.scientific_name} </Text>
-          <Text style= {{flexShrink: 1, alignItems: 'center'}}> This plant comes from the {item.family} family and genus {item.genus} </Text>
+          <View style={styles.plantView}>
+            <Image style={styles.plantPicture}
+              source={{ uri: item.http_image_url }} />
+            <View style={styles.plantDetails}>
+              <Text style={human.title1}>{item.common_name}</Text>
+              <Text style={[human.body, { flex: 1, flexShrink: 1 }]}>
+                <Text>Scientific Name </Text>
+                <Text style={human.headline}>{item.scientific_name}</Text>
+                <Text>.</Text>
+                <Text> This plant comes from the </Text>
+                <Text style={{ fontStyle: 'italic' }}>{item.family}</Text>
+                <Text> family and the </Text>
+                <Text style={{ fontStyle: 'italic' }}>{item.genus}</Text>
+                <Text> genus.</Text>
+              </Text>
+            </View>
+          </View>
         </View>
       </TouchableOpacity>
-      
-
-    )
+    );
   }
 
   return (
-    <View>
-      <FlatList 
-            style = {styles.list}
-            data={props}
-            keyExtractor={item => item.key}
-            ItemSeparatorComponent = {renderSeperator}
-            renderItem = { ( { item, index }) => {
-              return listItemRender(item);
-            }}
-        />
-       
+    <View >
+      <FlatList
+        data={props.plants}
+        renderItem={({ item }) => listItemRenderer(item)}
+        ItemSeparatorComponent={() => (<View style={{ height: 15 }} />)}
+        contentContainerStyle={{ alignItems: 'center' }}
+        renderSectionHeader={({ section }) =>
+          <View style={styles.header}>
+            <Text style={styles.title}>{section.title}</Text>
+          </View>
+        }
+        onRefresh={() => this.resetList()}
+        refreshing={refreshing}
+        removeClippedSubviews={true}
+      />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-   
-  listItem: {
-    padding: 10, 
+  container: {
     flex: 1,
-    flexDirection: 'row',
-    marginLeft: 1,
-
-
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  image: {
-    width: 40, 
-    height: 40, 
-    borderWidth: 1, 
-    borderRadius: 100, 
-    marginRight: 5
-  }
+  plants: {
+    width: Metrics.screenWidth,
+    paddingLeft: 2,
+    borderWidth: Metrics.borderWidth,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+  },
+  plantView: {
+    marginLeft: Metrics.marginHorizontal,
+    marginRight: Metrics.marginHorizontal,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
+  },
+  plantPicture: {
+    height: Metrics.images.large,
+    width: Metrics.images.large,
+    borderRadius: Metrics.images.large * 0.5,
+    borderWidth: 1,
+  },
+  plantDetails: {
+    flexDirection: 'column',
+    flex: 1,
+    marginLeft: Metrics.marginHorizontal,
+    marginRight: Metrics.marginHorizontal,
+  },
 });
